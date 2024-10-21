@@ -1,0 +1,80 @@
+<div class="min-h-screen bg-cover bg-center flex items-center justify-center">
+  <div class="bg-white border border-gray-300 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-3xl font-extrabold mb-6 text-center text-gray-800">Create Your Account</h2>
+    <p class="text-center text-gray-600 mb-8">Please fill in the information below to create an account</p>
+    
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <!-- Name Input -->
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          formControlName="name"
+          class="mt-1 block w-full p-3 border border-black rounded-md focus:outline-none focus:ring-1 focus:ring-black"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+    
+      <!-- Email Input -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          formControlName="email"
+          class="mt-1 block w-full p-3 border border-black rounded-md focus:outline-none focus:ring-1 focus:ring-black"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      
+      <!-- Password Input -->
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          formControlName="password"
+          class="mt-1 block w-full p-3 border border-black rounded-md focus:outline-none focus:ring-1 focus:ring-black"
+          placeholder="Create a password"
+          required
+        />
+      </div>
+    
+      <!-- Role Selection (Combo Box) -->
+      <div class="mb-4">
+        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+        <select
+          id="role"
+          name="role"
+          formControlName="role"
+          class="mt-1 block w-full p-3 border border-black rounded-md focus:outline-none focus:ring-1 focus:ring-black"
+          aria-placeholder="Select Role"
+          required
+        >
+          <option value="">Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="Employee">Employee</option>
+        </select>
+      </div>
+    
+      <!-- Sign Up Button -->
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="w-1000 bg-white border border-black text-black font-bold py-2 px-4 rounded-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-white"
+          routerLink="/login"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+    
+
+  </div>
+</div>

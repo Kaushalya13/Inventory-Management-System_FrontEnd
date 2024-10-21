@@ -1,0 +1,89 @@
+<div class="container mx-auto p-10 min-h-screen pl-10 pt-28">
+    <div class="border p-5 rounded-lg sm:w-3/3" >
+      <div class="flex justify-start">
+        <div class="sm:w-1/2 w-full">
+          <h1 class="text-3xl font-bold">Supplier</h1>
+          <h3 class="text-2xl text-black-600">All Suppliers</h3>
+        </div>
+      </div>
+  
+      
+      <div class="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-row justify-between items-center">
+        <!-- Search Input -->
+        <div class="lg:w-1/2 md:w-1/2 sm:w-8/12 w-full mt-2 flex items-center">
+            <input
+            #searchInput 
+            aria-label="Search"
+            class="form-control form-control-sm w-96 py-2 px-3 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+            placeholder="Search"
+            type="search"
+            (keyup)="searchText(searchInput.value, $event)"
+            (input)="handleSearchInput(searchInput.value)" 
+          />
+        </div>
+
+        <!-- New Supplier Button -->
+        <div class="lg:w-1/2 md:w-1/2 sm:w-4/12 w-full mt-2">
+          <button  (click)="addSupplier()" 
+            class="btn ms-3 text-black py-2 px-4 border border-black rounded-md shadow bg-white hover:bg-white shadow-white float-right">
+            <i class="bi bi-plus-circle" ></i> Add Supplier
+          </button>
+        </div>
+      </div>
+  
+      <!-- Table -->
+      <div class="overflow-hidden mt-6">
+        <table class="table-auto w-full bg-white rounded-lg shadow-lg border border-black-300">
+            <thead class="border-t text-black-700">
+                <tr>
+                    <th class="px-4 py-2 text-left">No</th>
+                    <th class="px-4 py-2 text-left">Code</th>
+                    <th class="px-4 py-2 text-left">Name</th>
+                    <th class="px-4 py-2 text-left">Email</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Contact No</th>
+                    <th class="px-4 py-2 text-left">Status</th>
+                    <th class="px-4 py-2 text-left">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-t" *ngFor="let supplier of suppliers; let i = index">
+                    <td class="text-capitalize text-sm px-4 py-2">{{ i + 1 }}</td>
+                    <td class="text-capitalize text-sm px-4 py-2">{{ supplier.code }}</td>
+                    <td class="text-capitalize text-sm px-4 py-2">{{ supplier.name }}</td>
+                    <td class="text-capitalize text-sm px-4 py-2">{{ supplier.email }}</td>
+                    <td class="text-capitalize text-sm px-4 py-2">{{ supplier.address }}</td>
+                    <td class="text-capitalize text-sm px-4 py-2">{{ supplier.contact }}</td>
+    
+                    <td style="font-size: 13px !important">
+                      <div class="form-check form-switch">
+                        <label class="inline-flex items-center cursor-pointer">
+                          <input
+                            type="checkbox"
+                            [checked]="supplier.isActive"
+                            (change)="statusChange(supplier.supplierId, supplier.isActive)"
+                            class="sr-only peer"
+                          />
+                          <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#29bf12]"
+                          ></div>
+                          <span class="ms-3 text-sm font-medium dark:text-black-300">
+                            {{ supplier.isActive ? "ACTIVE" : "INACTIVE" }}
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    
+                    <!-- Action buttons -->
+                    <td class="text-capitalize text-sm px-6 py-2">
+                      <button class="text-[#ffb703] hover:text-[#ffb703] mr-3">
+                        <i (click)="editSupplier(supplier)" class="fas fa-edit"></i>
+                      </button>
+                     
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>  

@@ -1,0 +1,43 @@
+<div class="bg-white shadow-md rounded-lg p-6" style="height: 400px; width: 300px;">
+    <!-- Header -->
+    <div class="justify-content-start">
+      <div class="col-12 mb-6">
+        <h1>
+          {{ brandId ? "Update Brand" : "Add New Brand" }}
+        </h1>
+        <hr class="border-gray-400"/>
+      </div>
+    </div>
+    <br>
+  
+    <form [formGroup]="brandForm">
+      <div class="grid grid-cols-1 sm:grid-cols-2">
+        <!-- Brand Code -->
+        <div class="col-span-1 lg:col-span-2">
+          <label for="code" class="block text-sm font-medium text-gray-900">Brand Code</label>
+          <input type="text" id="code" name="code" placeholder="Enter Brand code" 
+            class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md">
+        </div>
+  
+        <br>
+        <!-- Brand Name -->
+        <div class="col-span-1 lg:col-span-2">
+          <label for="name" class="block text-sm font-medium text-gray-900">Brand Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter Brand name" 
+            class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md">
+        </div>
+      </div>
+  
+      <br>
+      <!-- Submit Button -->
+      <div class="flex justify-end mt-6">
+        <button type="submit" 
+                class="w-auto flex justify-center py-2 px-4 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-white"
+                (click)="saveBrand()">
+          <span class="me-1"><i class="fs-6 bi bi-save"></i></span>
+          {{ brandId ? "Update Brand" : "Add Brand" }}
+        </button>
+      </div>
+    </form>
+  </div>
+  

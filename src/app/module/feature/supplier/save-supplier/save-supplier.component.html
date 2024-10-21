@@ -1,0 +1,76 @@
+<div class="bg-white shadow-md rounded-lg p-6" style="width: 600px;">
+  <!-- Header -->
+  <div class="justify-content-start">
+    <div class="col-12 mb-6">
+      <h1>{{ supplierId ? "Update Supplier" : "New Supplier" }}</h1>
+      <h3 class="text-2xl text-gray-400">{{ supplierId ? "Edit the details of Supplier" : "Fill in the details to add a new Supplier" }}</h3>
+      <hr class="border-gray-400" />
+    </div>
+  </div>
+  <br>
+
+  <form [formGroup]="supplierForm" (ngSubmit)="saveSupplier()">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Supplier Code -->
+      <div class="col-span-1 lg:col-span-2">
+        <label for="code" class="block text-sm font-medium text-gray-900">Supplier Code</label>
+        <input type="text" id="code" formControlName="code" placeholder="Enter Supplier code"
+          class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md" />
+        <div *ngIf="supplierForm.get('code')?.invalid && supplierForm.get('code')?.touched" class="text-red-500 text-sm">
+          Supplier Code is required.
+        </div>
+      </div>
+
+      <!-- Supplier Name -->
+      <div class="col-span-1 lg:col-span-2">
+        <label for="name" class="block text-sm font-medium text-gray-900">Supplier Name</label>
+        <input type="text" id="name" formControlName="name" placeholder="Enter Supplier name"
+          class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md" />
+        <div *ngIf="supplierForm.get('name')?.invalid && supplierForm.get('name')?.touched" class="text-red-500 text-sm">
+          Supplier Name is required.
+        </div>
+      </div>
+
+      <!-- Supplier Email -->
+      <div class="col-span-1 lg:col-span-2">
+        <label for="email" class="block text-sm font-medium text-gray-900">Email</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter Email"
+          class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md" />
+        <div *ngIf="supplierForm.get('email')?.invalid && supplierForm.get('email')?.touched" class="text-red-500 text-sm">
+          <div *ngIf="supplierForm.get('email')?.errors?.['required']">Email is required.</div>
+          <div *ngIf="supplierForm.get('email')?.errors?.['email']">Please enter a valid email.</div>
+        </div>
+      </div>
+
+      <!-- Supplier Address -->
+      <div class="col-span-1 lg:col-span-2">
+        <label for="address" class="block text-sm font-medium text-gray-900">Supplier Address</label>
+        <input type="text" id="address" formControlName="address" placeholder="Enter Supplier Address"
+          class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md" />
+        <div *ngIf="supplierForm.get('address')?.invalid && supplierForm.get('address')?.touched" class="text-red-500 text-sm">
+          Supplier Address is required.
+        </div>
+      </div>
+
+      <!-- Supplier Contact -->
+      <div class="col-span-1 lg:col-span-2">
+        <label for="contact" class="block text-sm font-medium text-gray-900">Contact</label>
+        <input type="text" id="contact" formControlName="contact" placeholder="Enter contact"
+          class="form-control form-control-sm px-3 py-2 w-full border border-gray-600 rounded-md" />
+        <div *ngIf="supplierForm.get('contact')?.invalid && supplierForm.get('contact')?.touched" class="text-red-500 text-sm">
+          Contact is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-end mt-6">
+      <button type="submit"
+        class="w-auto flex justify-center py-2 px-4 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-white"
+        [disabled]="supplierForm.invalid">
+        <span class="me-1"><i class="fs-6 bi bi-save"></i></span>
+        {{ supplierId ? "Update Supplier" : "Add Supplier" }}
+      </button>
+    </div>
+  </form>
+</div>
